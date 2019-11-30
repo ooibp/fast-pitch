@@ -20,7 +20,7 @@ export default {
   name: "home",
   components: {
     PitchGrid,
-    LikedList,
+    LikedList
   },
   data() {
     return {
@@ -29,60 +29,65 @@ export default {
           userId: 1,
           id: 1,
           title: "Pitch Number One",
-          body: "Pitch one body blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
-          likes: 123,
+          body:
+            "Pitch one body blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+          likes: 123
         },
         {
           userId: 1,
           id: 2,
           title: "Pitch Number Two",
           body: "Pitch two body blah blah blah",
-          likes: 13,
+          likes: 13
         },
         {
           userId: 1,
           id: 3,
           title: "Pitch Number Three",
           body: "Pitch three body blah blah blah blah blah",
-          likes: 23,
+          likes: 23
         },
         {
           userId: 1,
           id: 4,
           title: "Pitch Number Four",
           body: "Pitch four body blah blah blah",
-          likes: 1,
+          likes: 1
         },
         {
           userId: 1,
           id: 5,
           title: "Pitch Number One",
-          body: "Pitch one body blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
-          likes: 13,
+          body:
+            "Pitch one body blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+          likes: 13
         },
         {
           userId: 1,
           id: 6,
           title: "Pitch Number Two",
           body: "Pitch two body blah blah blah",
-          likes: 3,
+          likes: 3
         },
         {
           userId: 1,
           id: 7,
           title: "Pitch Number Three",
           body: "Pitch three body blah blah blah blah blah",
-          likes: 2,
+          likes: 2
         },
         {
           userId: 1,
           id: 8,
           title: "Pitch Number Four",
           body: "Pitch four body blah blah blah",
-          likes: 123,
-        },
+          likes: 123
+        }
       ]
     };
+  },
+  beforeCreate: function() {
+    document.body.className = "";
   }
 };
 </script>
