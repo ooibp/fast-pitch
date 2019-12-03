@@ -1,18 +1,18 @@
 <template>
   <transition name="slide" appear="true">
-    <div class="d-flex flex-column align-items-end mt-5">
-      <SignUpForm class="mr-5" />
+    <div class="d-flex flex-column align-items-start mt-5">
+      <LogInForm class="ml-5" />
     </div>
   </transition>
 </template>
 
 <script>
-import SignUpForm from "../components/SignUpForm.vue";
+import LogInForm from "../components/LogInForm.vue";
 
 export default {
-  name: "SignUp",
+  name: "LogIn",
   components: {
-    SignUpForm
+    LogInForm
   },
   data: function() {
     return {
@@ -31,7 +31,7 @@ export default {
 }
 
 .slide-enter {
-  transform: translateX(-20px);
+  transform: translateX(20px);
   opacity: 0;
 }
 

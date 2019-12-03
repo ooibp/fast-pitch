@@ -1,8 +1,13 @@
+body {
+  overflow-x: hidden;
+}
+
 /* Background image for sign up page */
-body.signup {
-  background-image: url("./Signup_background.jpg");
+body.sign {
+  background-image: url("./static/Signup_background.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  /* background-color: blue; */
 }

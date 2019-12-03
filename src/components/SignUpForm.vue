@@ -1,5 +1,5 @@
 <template>
-  <div class="hero w-50 p-4 m-0">
+  <div class="hero p-4 m-0" style="width: 35%">
     <h1 class="text-center">Sign Up</h1>
     <form @submit.prevent="validateForm">
       <div class="form-group">
@@ -58,8 +58,13 @@
         <small class="form-text text-danger" v-show="cPasswordIsNotValid">Passwords do not match</small>
       </div>
 
-      <button type="submit" class="btn btn-success btn-lg">Create</button>
+      <div class="text-right">
+        <button type="submit" class="btn btn-success btn-lg">Create</button>
+      </div>
     </form>
+    <p class="text-center">
+      Already have an account? <router-link to="/login">Log In</router-link>
+    </p>
   </div>
 </template>
 
