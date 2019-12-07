@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ROUTES from '../constants/constants';
 import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import LogIn from '../views/LogIn.vue'
@@ -8,22 +9,22 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: ROUTES.HOME,
     name: 'home',
     component: Home
   },
   {
-    path: '/signup',
+    path: ROUTES.SIGNUP,
     name: 'signup',
     component: SignUp
   },
   {
-    path: '/login',
+    path: ROUTES.LOGIN,
     name: 'login',
     component: LogIn
   },
   {
-    path: '/about',
+    path: ROUTES.ABOUT,
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

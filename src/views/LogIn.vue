@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide" appear="true">
+  <transition name="slide" appear>
     <div class="d-flex flex-column align-items-start mt-5">
       <LogInForm class="ml-5" />
     </div>

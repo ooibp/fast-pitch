@@ -1,29 +1,41 @@
 <template>
   <div id="app">
     <nav id="nav" class="navbar navbar-expand-lg sticky-top">
-      <router-link to="/" class="navbar-brand">Fast Pitch</router-link>
+      <router-link :to="HOME" class="navbar-brand">Fast Pitch</router-link>
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <router-link to="/about" class="nav-link">About</router-link>
+          <router-link :to="ABOUT" class="nav-link">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/signup" class="nav-link">Sign Up</router-link>
+          <router-link :to="SIGNUP" class="nav-link">Sign Up</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/login" class="nav-link">Log In</router-link>
+          <router-link :to="LOGIN" class="nav-link">Log In</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/profile" class="nav-link">Profile</router-link>
+          <router-link :to="PROFILE" class="nav-link">Profile</router-link>
         </li>
         <li class="nav-item">
-          <router-link to="/logout" class="nav-link">Logout</router-link>
+          <router-link :to="HOME" class="nav-link">Logout</router-link>
         </li>
       </ul>
     </nav>
-    <router-view :key="$route" />
+    <router-view />
   </div>
 </template>
+
+<script>
+import ROUTES from "./constants/constants";
+
+export default {
+  data: function() {
+    return {
+      ...ROUTES
+    };
+  }
+};
+</script>
 
 <style>
 html,
