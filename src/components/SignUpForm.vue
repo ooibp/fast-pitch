@@ -2,6 +2,7 @@
   <div class="hero p-4 m-0" style="width: 35%">
     <h1 class="text-center">Sign Up</h1>
     <form @submit.prevent="validateForm">
+      <div class="bg-danger" v-if="error">{{error}}</div>
       <div class="form-group">
         <label for="username-input">Username</label>
         <input
@@ -63,12 +64,16 @@
       </div>
     </form>
     <p class="text-center">
-      Already have an account? <router-link to="/login">Log In</router-link>
+      Already have an account?
+      <router-link to="/login">Log In</router-link>
     </p>
   </div>
 </template>
 
 <script>
+import * as firebase from "firebase";
+// import ROUTES from '../constants/constants';
+
 export default {
   name: "SignUpForm",
   data: function() {
@@ -80,7 +85,8 @@ export default {
       usernameIsNotValid: false,
       emailIsNotValid: false,
       passwordIsNotValid: false,
-      cPasswordIsNotValid: false
+      cPasswordIsNotValid: false,
+      error: null,
     };
   },
   methods: {
@@ -110,19 +116,28 @@ export default {
           this.cPasswordIsNotValid
         )
       ) {
-        alert("Success!");
-        /* TODO: Submit form to create new user */
-        this.username = "";
-        this.userEmail = "";
-        this.userPassword = "";
-        this.userCPassword = "";
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.userEmail, this.userPassword)
+          .then(response => {
+            this.username = "";
+            this.userEmail = "";
+            this.userPassword = "";
+            this.userCPassword = "";
+            let userId = response.user.uid;
+            alert(userId);
+            this.$router.push("/profile");
+          })
+          .catch(err => {
+            this.error = err.message;
+          });
+      } else {
+        this.validateUsername();
+        this.validateEmail();
+        this.validatePassword();
+        this.validateCPassword();
         return;
       }
-      this.validateUsername();
-      this.validateEmail();
-      this.validatePassword();
-      this.validateCPassword();
-      return;
     }
   }
 };

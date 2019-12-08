@@ -9,6 +9,6 @@ export default {
   name: "about",
   beforeCreate: function () {
     document.body.className = ""
-  }
+  },
 }
 </script>>
