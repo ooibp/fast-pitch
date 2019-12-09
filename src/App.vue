@@ -31,9 +31,9 @@ import ROUTES from "./constants/constants";
 export default {
   data: function() {
     return {
-      ...ROUTES
+      ...ROUTES,
     };
-  }
+  },
 };
 </script>
 

@@ -72,7 +72,7 @@
 
 <script>
 import * as firebase from "firebase";
-// import ROUTES from '../constants/constants';
+import ROUTES from "../constants/constants";
 
 export default {
   name: "SignUpForm",
@@ -86,7 +86,7 @@ export default {
       emailIsNotValid: false,
       passwordIsNotValid: false,
       cPasswordIsNotValid: false,
-      error: null,
+      error: null
     };
   },
   methods: {
@@ -116,17 +116,16 @@ export default {
           this.cPasswordIsNotValid
         )
       ) {
+        // If all input fields valid, create user account
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.userEmail, this.userPassword)
-          .then(response => {
+          .then(() => {
             this.username = "";
             this.userEmail = "";
             this.userPassword = "";
             this.userCPassword = "";
-            let userId = response.user.uid;
-            alert(userId);
-            this.$router.push("/profile");
+            this.$router.push(ROUTES.PROFILE);
           })
           .catch(err => {
             this.error = err.message;
