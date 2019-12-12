@@ -120,12 +120,17 @@ export default {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.userEmail, this.userPassword)
-          .then(() => {
-            this.username = "";
-            this.userEmail = "";
-            this.userPassword = "";
-            this.userCPassword = "";
-            this.$router.push(ROUTES.PROFILE);
+          .then(auth => {
+            auth.user
+              .updateProfile({ displayName: this.username })
+              .then(() => {
+                this.$store.dispatch("updateUsername", this.username);
+                this.username = "";
+                this.userEmail = "";
+                this.userPassword = "";
+                this.userCPassword = "";
+                this.$router.push(ROUTES.PROFILE);
+              })
           })
           .catch(err => {
             this.error = err.message;

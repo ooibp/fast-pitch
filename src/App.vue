@@ -8,16 +8,16 @@
           <router-link :to="ABOUT" class="nav-link">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="SIGNUP" class="nav-link">Sign Up</router-link>
+          <router-link :to="SIGNUP" class="nav-link" v-if="!user.loggedIn">Sign Up</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="LOGIN" class="nav-link">Log In</router-link>
+          <router-link :to="LOGIN" class="nav-link" v-if="!user.loggedIn">Log In</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="PROFILE" class="nav-link">Profile</router-link>
+          <router-link :to="PROFILE" class="nav-link" v-if="user.loggedIn">{{user.data.email}}</router-link>
         </li>
         <li class="nav-item">
-          <router-link :to="HOME" class="nav-link">Logout</router-link>
+          <span style="cursor: pointer;" class="nav-link" @click='logout' v-if="user.loggedIn">Logout</span>
         </li>
       </ul>
     </nav>
@@ -27,6 +27,8 @@
 
 <script>
 import ROUTES from "./constants/constants";
+import * as firebase from 'firebase';
+import { mapGetters } from "vuex";
 
 export default {
   data: function() {
@@ -34,6 +36,17 @@ export default {
       ...ROUTES,
     };
   },
+  computed: {
+    ...mapGetters({
+      user: "user",
+    })
+  },
+  methods:{
+    logout: function () {
+      // TODO: Check path before redirect
+      firebase.auth().signOut().then(() => this.$router.replace(ROUTES.HOME)).catch(err => {alert(err)});
+    }
+  }
 };
 </script>
 
